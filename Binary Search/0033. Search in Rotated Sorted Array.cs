@@ -1,5 +1,37 @@
 public class Solution {
-    public int Search(int[] nums, int target) {
+    // easier to comprehend solution
+    public int Search(int[] nums, int target){
+        //Find the pivot
+        int left = 1, right = nums.Length - 1, pivot = nums.Length;
+        while(left <= right){
+            int mid = (left + right) / 2;
+            if(nums[mid] >= nums[0]){ // We are on the left portion still
+                left = mid + 1;
+            } else {
+                pivot = Math.Min(pivot, mid); // set the pivot to lowest val
+                right = mid - 1;
+            }
+        }
+        
+        //Find the value
+        bool leftSide = target >= nums[0]; // Check if our target on the left Side
+        left = leftSide ? 0 : pivot; // If not true our left is found pivot
+        right = leftSide ? pivot - 1 : nums.Length - 1;
+        while(left <= right){
+            int mid = (left + right) / 2;
+            if(nums[mid] == target){ // We found target
+                return mid;
+            } else if(target < nums[mid]){ // On the left side
+                right = mid - 1;
+            } else { // On the right side
+                left = mid + 1;
+            }
+        }
+        
+        return -1;
+    }
+    
+    public int Search2(int[] nums, int target) {
         int left = 0, right = nums.Length - 1;
         while(left <= right){
             int mid = (left + right) / 2;
