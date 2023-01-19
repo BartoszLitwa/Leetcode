@@ -1,7 +1,7 @@
 public class Solution {
     public bool IsNStraightHand(int[] hand, int groupSize) {
-        if(hand.Length % groupSize != 0)
-            return false;
+        if(hand.Length % groupSize != 0) // When it is not dividable by k
+            return false; // we cannot create k sets
 
         var dict = new Dictionary<int, int>();
         var sorted = new List<int>();
