@@ -4,19 +4,19 @@ public class Solution {
         int result = 0;
         int sum = 0;
 
-        for(int i = 0; i < k; i++){
+        for(int i = 0; i < k; i++){ // First window
             sum += arr[right++];
         }
 
-        while (right < arr.Length) {
+        while (right < arr.Length) { // Sliding window
             if(sum >= threshold * k){
                 result++;
             }
-
+            // Add the right element and remove the left element
             sum += -arr[left++] + arr[right++];
         }
 
-        if(sum >= threshold * k){
+        if(sum >= threshold * k){ // Check the last window
             result++;
         }
 
