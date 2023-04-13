@@ -15,8 +15,8 @@ public class Solution {
 
         while(a != b){ // Until a and b are the same
             // If we reach the end of a list, then we start at the beginning of the list
-            a = a is null ? headA : a.next; // Otherwise we move to the next node
-            b = b is null ? headB : b.next;
+            a = a is null ? headB : a.next; // Otherwise we move to the next node
+            b = b is null ? headA : b.next;
         }
 
         return a; // Return the intersection node
