@@ -3,6 +3,8 @@ public class Solution {
         var res = new List<IList<int>>();
         var stack = new Stack<int>();
         var map = new Dictionary<int, int>(); // <number, count>
+        // Linq version
+        // var map = nums.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
 
         foreach (int num in nums) {
             if (map.ContainsKey(num)) {
